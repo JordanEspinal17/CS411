@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Responsive Login and Signup Form </title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="style.css">
+                
+        <!-- Boxicons CSS -->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+                        
+    </head>
+    <body>
+        <section class="container forms">
+            <div class="form login">
+                <div class="form-content">
+                    <header>Login</header>
+                    <form action="#">
+                        <div class="field input-field">
+                            <input type="email" placeholder="Email" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" placeholder="Password" class="password">
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+                        <div class="form-link">
+                            <a href="#" class="forgot-pass">Forgot password?</a>
+                        </div>
+
+                        <div class="field button-field">
+                            <button id="signInButton">Login</button>
+                        </div>
+                    </form>
+
+                    <div class="form-link">
+                        <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="media-options">
+                    <a href="#" class="field google">
+                        <img src="#" alt="" class="google-img">
+                        <span>Login with Google</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Signup Form -->
+
+            <div class="form signup">
+                <div class="form-content">
+                    <header>Signup</header>
+                    <form action="#">
+                        <div class="field input-field">
+                            <input type="email" placeholder="Email" class="input" id="userEmail">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" placeholder="Create password" class="password" id="userPassword">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" placeholder="Confirm password" class="password">
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+                        <div class="field button-field">
+                            <button id ="signUpButton">Signup</button>
+                        </div>
+                    </form>
+
+                    <div class="form-link">
+                        <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="media-options">
+                    <a href="#" class="field google">
+                        <img src="#" alt="" class="google-img">
+                        <span>Login with Google</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <div id="secretContent">
+            <h3>This is top secret information that you can only see if</h3>
+            <h1>AUTHENTICATED</h1>
+            <button id="signOutButton">Sign Out</button>
+        </div>
+
+        <script type="module">
+            //Update the below URL with the appropriate version if necessary.
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+            import {
+                getAuth,
+                createUserWithEmailAndPassword,
+                signInWithEmailAndPassword,
+                onAuthStateChanged,
+                signOut
+            //Update the below URL with the appropriate version if necessary.
+            } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+           
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+    
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyBtkFbG_FmHlxbyWDApj-4EbUnrC_lUBa0",
+                authDomain: "cs411-6f937.firebaseapp.com",
+                projectId: "cs411-6f937",
+                storageBucket: "cs411-6f937.appspot.com",
+                messagingSenderId: "6897657236",
+                appId: "1:6897657236:web:6a012f74b1aca6002a1b81",
+                measurementId: "G-M6EEKTE7RV"
+            };
+    
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+    
+            const userEmail = document.querySelector("#userEmail");
+            const userPassword = document.querySelector("#userPassword");
+            const authForm = document.querySelector("#authForm");
+            const secretContent = document.querySelector("#secretContent");
+            const signUpButton = document.querySelector("#signUpButton");
+            const signInButton = document.querySelector("#signInButton");
+            const signOutButton = document.querySelector("#signOutButton");
+    
+            secretContent.style.display = 'none';
+    
+            const userSignUp = async() => {
+                const signUpEmail = userEmail.value;
+                const signUpPassword = userPassword.value;
+                createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log(user);
+                    alert("Your account has been created!");
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode + errorMessage)
+                })
+            }
+    
+            const userSignIn = async() => {
+                const signInEmail = userEmail.value;
+                const signInPassword = userPassword.value;
+                signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    alert("You have signed in successfully!");
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode + errorMessage)
+                })
+            }
+    
+            const checkAuthState = async() => {
+                onAuthStateChanged(auth, user => {
+                    if(user) {
+                        authForm.style.display = 'none';
+                        secretContent.style.display = 'block';
+                    }
+                    else {
+                        authForm.style.display = 'block';
+                        secretContent.style.display = 'none';
+                    }
+                })
+            }
+    
+            const userSignOut = async() => {
+                await signOut(auth);
+            }
+    
+            checkAuthState();
+    
+            signUpButton.addEventListener('click', userSignUp);
+            signInButton.addEventListener('click', userSignIn);
+            signOutButton.addEventListener('click', userSignOut);
+        </script>
+    </body>
+</html>
