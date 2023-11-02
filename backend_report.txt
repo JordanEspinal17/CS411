@@ -19,4 +19,7 @@ For guidance and clarity, I found a comprehensive video tutorial that demystifie
 To further my grasp on the subject, I turned to the official Spotify Web API documentation. 
 This trove of information clarified advanced features, from intricate sorting options to the methodology behind genre-specific song recommendations.
 
+
+Youtube Video: https://www.youtube.com/watch?v=WAmEZBEeNmg&t=845s
+Spotify Api: https://developer.spotify.com/documentation/web-api/reference/get-recommendation-genres
 ----------------
