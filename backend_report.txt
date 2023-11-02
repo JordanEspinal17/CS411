@@ -4,7 +4,7 @@ Created a branch from firebas-login and this will be used for backend testing an
 
 ----------------
 
-Date: 10/15/2023
+Date: 11/2/2023
 Author: Ryan Chen
 In my recent endeavors, I designed Python scripts to tap into Spotify's Web API. 
 The objective was straightforward: curate song suggestions based on artist and genre inputs. 
@@ -18,3 +18,5 @@ For guidance and clarity, I found a comprehensive video tutorial that demystifie
 
 To further my grasp on the subject, I turned to the official Spotify Web API documentation. 
 This trove of information clarified advanced features, from intricate sorting options to the methodology behind genre-specific song recommendations.
+
+----------------
