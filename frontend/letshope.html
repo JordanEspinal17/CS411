@@ -15,10 +15,9 @@
     <section class="container forms">
         <div class="form login">
             <div class="authForm">
-            <div class="form-content">
+            
                 <header>Login</header>
                 <!--Put an action of where to take login page here-->
-                <form action="#">
                     <div class="field input-field">
                         <input type="email" placeholder="email" id="userEmail" class="input">
                     </div>
@@ -32,31 +31,26 @@
                     <!-- put a forgot password here?-->
 
                     <div class="field button-field">
-                        <button id="signInButton">Sign Up</button>
+                        <button id="signInButton">Sign In</button>
                     </div>
 
-                </form>
+                    <div class="field button-field">
+                        <button id="signUpButton">Sign Up</button>
+                    </div>
 
                 <!-- dont have an account area and send to a sign up page-->
 
             </div>
         </div>
+        
+
+        <div class="containerTesting">
+            <button id="signInButton">Sign In</button>
+            <input type="checkbox" checked="checked"> Remember me   
+            Forgot <a href="#"> password? </a> 
         </div>
 
-    <div class="containerTesting">
-        <button id="signInButton">Sign In</button>
-        <input type="checkbox" checked="checked"> Remember me   
-        Forgot <a href="#"> password? </a> 
-    </div>
-    </div>
-
     </section>
-
-    <div id="secretContent">
-        <h3>This is top secret information that you can only see if</h3>
-        <h1>AUTHENTICATED</h1>
-        <button id="signOutButton">Sign Out</button>
-    </div>
 
     <script type="module">
         //Update the below URL with the appropriate version if necessary.
@@ -112,6 +106,7 @@
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode + errorMessage)
+                alert(errorCode + errorMessage)
             })
         }
 
@@ -126,21 +121,27 @@
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode + errorMessage)
+                console.log(errorCode + " " + errorMessage)
+                alert(errorCode + errorMessage)
             })
         }
 
+        <button id="checkAuthButton">Check Authorization</button>
+        document.getElementById('checkAuthButton').addEventListener('click', checkAuthState);
+
         const checkAuthState = async() => {
-            onAuthStateChanged(auth, user => {
-                if(user) {
-                    authForm.style.display = 'none';
-                    secretContent.style.display = 'block';
-                }
-                else {
-                    authForm.style.display = 'block';
-                    secretContent.style.display = 'none';
-                }
-            })
+            const user = await new Promise((resolve) =>  {
+                const unsubscribe = onAuthStateChanged(auth, (user) => {
+                    unsubscribe()
+                    resolve(user)
+                });
+            });
+
+            if(user) {
+                window.location.href = 'secret.html';
+            } else {
+                console.log("Auth failed");
+            }
         }
 
         const userSignOut = async() => {
