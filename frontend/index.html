@@ -19,11 +19,11 @@
                 <div class="form-content">
                     <header>Login</header>
                         <div class="field input-field">
-                            <input type="email" placeholder="Email" class="input">
+                            <input type="email" placeholder="Email" class="input" id="userEmail">
                         </div>
 
                         <div class="field input-field">
-                            <input type="password" placeholder="Password" class="password">
+                            <input type="password" placeholder="Password" class="password" id="userPassword">
                             <i class='bx bx-hide eye-icon'></i>
                         </div>
 
@@ -40,36 +40,6 @@
                     </div>
                 </div>
 
-            </div>
-
-            <!-- Signup Form -->
-
-            <div class="form signup">
-                <div class="form-content">
-                    <header>Signup</header>
-                    <form action="#">
-                        <div class="field input-field">
-                            <input type="email" placeholder="Email" class="input" id="userEmail">
-                        </div>
-
-                        <div class="field input-field">
-                            <input type="password" placeholder="Create password" class="password" id="userPassword">
-                        </div>
-
-                        <div class="field input-field">
-                            <input type="password" placeholder="Confirm password" class="password">
-                            <i class='bx bx-hide eye-icon'></i>
-                        </div>
-
-                        <div class="field button-field">
-                            <button id ="signUpButton">Signup</button>
-                        </div>
-                    </form>
-
-                    <div class="form-link">
-                        <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -112,22 +82,6 @@
             const signInButton = document.querySelector("#signInButton");
             const signOutButton = document.querySelector("#signOutButton");
     
-            const userSignUp = async() => {
-                const signUpEmail = userEmail.value;
-                const signUpPassword = userPassword.value;
-                createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    console.log(user);
-                    alert("Your account has been created!");
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(errorCode + errorMessage)
-                })
-            }
-    
             const userSignIn = async() => {
                 const signInEmail = userEmail.value;
                 const signInPassword = userPassword.value;
@@ -148,11 +102,9 @@
                 onAuthStateChanged(auth, user => {
                     if(user) {
                         authForm.style.display = 'none';
-                        secretContent.style.display = 'block';
                     }
                     else {
                         authForm.style.display = 'block';
-                        secretContent.style.display = 'none';
                     }
                 })
             }
@@ -163,7 +115,6 @@
     
             checkAuthState();
     
-            signUpButton.addEventListener('click', userSignUp);
             signInButton.addEventListener('click', userSignIn);
             signOutButton.addEventListener('click', userSignOut);
         </script>
