@@ -17,26 +17,22 @@
         <section class="container forms">
             <div class="form login">
                 <div class="form-content">
-                    <header>Login</header>
+                    <header>Sign Up</header>
                         <div class="field input-field">
-                            <input type="email" placeholder="Email" class="input" id="userEmail">
+                            <input type="email" placeholder="Email" class="input", id="userEmail">
                         </div>
 
                         <div class="field input-field">
-                            <input type="password" placeholder="Password" class="password" id="userPassword">
+                            <input type="password" placeholder="Password" class="password", id="userPassword">
                             <i class='bx bx-hide eye-icon'></i>
                         </div>
 
-                        <div class="form-link">
-                            <a href="#" class="forgot-pass">Forgot password?</a>
-                        </div>
-
                         <div class="field button-field">
-                            <button id="signInButton">Login</button>
+                            <button id="signUpButton">Sign Up</button>
                         </div>
 
                     <div class="form-link">
-                        <span>Don't have an account? <a href="signUp.html" class="link signup-link">Signup</a></span>
+                        <span>Already have an account? <a href="index.html" class="link login-link">Login</a></span>
                     </div>
                 </div>
 
@@ -81,14 +77,15 @@
             const signUpButton = document.querySelector("#signUpButton");
             const signInButton = document.querySelector("#signInButton");
             const signOutButton = document.querySelector("#signOutButton");
-    
-            const userSignIn = async() => {
-                const signInEmail = userEmail.value;
-                const signInPassword = userPassword.value;
-                signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+
+            const userSignUp = async() => {
+                const signUpEmail = userEmail.value;
+                const signUpPassword = userPassword.value;
+                createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    alert("You have signed in successfully!");
+                    console.log(user);
+                    alert("Your account has been created!");
                     window.location.href = 'secret.html';
                 })
                 .catch((error) => {
@@ -115,7 +112,7 @@
     
             checkAuthState();
     
-            signInButton.addEventListener('click', userSignIn);
+            signUpButton.addEventListener('click', userSignUp);
             signOutButton.addEventListener('click', userSignOut);
         </script>
         <script src="script.js"></script>
