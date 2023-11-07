@@ -70,24 +70,8 @@
                         <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
                     </div>
                 </div>
-
-                <div class="line"></div>
-
-                <div class="media-options">
-                    <a href="#" class="field google">
-                        <img src="#" alt="" class="google-img">
-                        <span>Login with Google</span>
-                    </a>
-                </div>
-
             </div>
         </section>
-
-        <div id="secretContent">
-            <h3>This is top secret information that you can only see if</h3>
-            <h1>AUTHENTICATED</h1>
-            <button id="signOutButton">Sign Out</button>
-        </div>
 
         <script type="module">
             //Update the below URL with the appropriate version if necessary.
@@ -127,8 +111,6 @@
             const signUpButton = document.querySelector("#signUpButton");
             const signInButton = document.querySelector("#signInButton");
             const signOutButton = document.querySelector("#signOutButton");
-    
-            secretContent.style.display = 'none';
     
             const userSignUp = async() => {
                 const signUpEmail = userEmail.value;
