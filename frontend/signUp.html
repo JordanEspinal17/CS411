@@ -17,66 +17,22 @@
         <section class="container forms">
             <div class="form login">
                 <div class="form-content">
-                    <header>Login</header>
+                    <header>Sign Up</header>
                         <div class="field input-field">
-                            <input type="email" placeholder="Email" class="input">
-                        </div>
-
-                        <div class="field input-field">
-                            <input type="password" placeholder="Password" class="password">
-                            <i class='bx bx-hide eye-icon'></i>
-                        </div>
-
-                        <div class="form-link">
-                            <a href="#" class="forgot-pass">Forgot password?</a>
-                        </div>
-
-                        <div class="field button-field">
-                            <button id="signInButton">Login</button>
-                        </div>
-
-                    <div class="form-link">
-                        <span>Don't have an account? <a href="signUp.html" class="link signup-link">Signup</a></span>
-                    </div>
-                </div>
-
-                <div class="line"></div>
-
-                <div class="media-options">
-                    <a href="#" class="field google">
-                        <img src="#" alt="" class="google-img">
-                        <span>Login with Google</span>
-                    </a>
-                </div>
-
-            </div>
-
-            <!-- Signup Form -->
-
-            <div class="form signup">
-                <div class="form-content">
-                    <header>Signup</header>
-                    <form action="#">
-                        <div class="field input-field">
-                            <input type="email" placeholder="Email" class="input" id="userEmail">
+                            <input type="email" placeholder="Email" class="input", id="userEmail">
                         </div>
 
                         <div class="field input-field">
-                            <input type="password" placeholder="Create password" class="password" id="userPassword">
-                        </div>
-
-                        <div class="field input-field">
-                            <input type="password" placeholder="Confirm password" class="password">
+                            <input type="password" placeholder="Password" class="password", id="userPassword">
                             <i class='bx bx-hide eye-icon'></i>
                         </div>
 
                         <div class="field button-field">
-                            <button id ="signUpButton">Signup</button>
+                            <button id="signUpButton">Sign Up</button>
                         </div>
-                    </form>
 
                     <div class="form-link">
-                        <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
+                        <span>Already have an account? <a href="index.html" class="link login-link">Login</a></span>
                     </div>
                 </div>
 
@@ -91,12 +47,6 @@
 
             </div>
         </section>
-
-        <div id="secretContent">
-            <h3>This is top secret information that you can only see if</h3>
-            <h1>AUTHENTICATED</h1>
-            <button id="signOutButton">Sign Out</button>
-        </div>
 
         <script type="module">
             //Update the below URL with the appropriate version if necessary.
@@ -137,7 +87,6 @@
             const signInButton = document.querySelector("#signInButton");
             const signOutButton = document.querySelector("#signOutButton");
     
-            secretContent.style.display = 'none';
     
             const userSignUp = async() => {
                 const signUpEmail = userEmail.value;
@@ -147,21 +96,6 @@
                     const user = userCredential.user;
                     console.log(user);
                     alert("Your account has been created!");
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(errorCode + errorMessage)
-                })
-            }
-    
-            const userSignIn = async() => {
-                const signInEmail = userEmail.value;
-                const signInPassword = userPassword.value;
-                signInWithEmailAndPassword(auth, signInEmail, signInPassword)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    alert("You have signed in successfully!");
                     window.location.href = 'secret.html';
                 })
                 .catch((error) => {
@@ -175,11 +109,9 @@
                 onAuthStateChanged(auth, user => {
                     if(user) {
                         authForm.style.display = 'none';
-                        secretContent.style.display = 'block';
                     }
                     else {
                         authForm.style.display = 'block';
-                        secretContent.style.display = 'none';
                     }
                 })
             }
@@ -191,7 +123,6 @@
             checkAuthState();
     
             signUpButton.addEventListener('click', userSignUp);
-            signInButton.addEventListener('click', userSignIn);
             signOutButton.addEventListener('click', userSignOut);
         </script>
     </body>
