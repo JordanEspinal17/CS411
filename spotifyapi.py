@@ -76,7 +76,7 @@ token = get_token()
 # for idx, song in enumerate(songs_by_artist): #enumerate is a built-in Python function that returns both the index and the value of each item in a list (or other iterable).
 #     print(f"{idx + 1}. {song['name']}")
 
-genres = ["rock"] #case sensitive 
+genres = ["action"] #case sensitive 
 songs = get_song_by_genre(token, genres)
 for idx, song in enumerate(songs):  # `enumerate` is a built-in Python function that returns both the index and the value of each item in a list (or other iterable).
     print(f"{idx + 1}. {song['name']}")  # This line prints the song's name with its corresponding index (starting from 1, not 0).
