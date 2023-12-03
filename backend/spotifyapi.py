@@ -62,23 +62,25 @@ def  get_song_by_genre(token, seed_genres_list):
     
     result = get(url, headers=headers)
     tracks = json.loads(result.content).get("tracks", [])
+    print(result)
     
     return tracks
 
 
-
+# get_song_by_artist(token, )
 
 
 token = get_token()
-print(token)
+# print(token)
 # result = search_for_artist(token, "Taylor Swift")
 # artist_id = result["id"]
 # songs_by_artist = get_song_by_artist(token, artist_id)
 # for idx, song in enumerate(songs_by_artist): #enumerate is a built-in Python function that returns both the index and the value of each item in a list (or other iterable).
 #     print(f"{idx + 1}. {song['name']}")
 
-genres = ["rock"] #case sensitive 
-songs = get_song_by_genre(token, genres)
-for idx, song in enumerate(songs):  # `enumerate` is a built-in Python function that returns both the index and the value of each item in a list (or other iterable).
-    print(f"{idx + 1}. {song['name']}")  # This line prints the song's name with its corresponding index (starting from 1, not 0).
+# genres = ["rock"] #case sensitive 
+# songs = get_song_by_genre(token, genres)
+# print(songs)
+# for idx, song in enumerate(songs):  # `enumerate` is a built-in Python function that returns both the index and the value of each item in a list (or other iterable).
+#     print(f"{idx + 1}. {song['id']}")  # This line prints the song's name with its corresponding index (starting from 1, not 0).
 
