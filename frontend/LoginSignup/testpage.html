@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+</head>
+
+<body>
+  <div id="user-container">
+    <h2>User Information</h2>
+    <p id="user-display"></p>
+  </div>
+
+  <script>
+    // Extract email from the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const userEmail = urlParams.get('email');
+
+    // Update the HTML with the email as the username
+    document.getElementById('user-display').innerText = `Welcome, ${userEmail}!`;
+  </script>
+</body>
+
+</html>

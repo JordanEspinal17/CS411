@@ -89,7 +89,8 @@
                 .then((userCredential) => {
                     const user = userCredential.user;
                     alert("You have signed in successfully!");
-                    window.location.href = '../homepage/index.html';
+                    window.location.href = `../homepage/index.html?email=${encodeURIComponent(signInEmail)}`;
+                    // window.location.href = `testpage.html?email=${encodeURIComponent(signInEmail)}`
                 })
                 .catch((error) => {
                     const errorCode = error.code;
