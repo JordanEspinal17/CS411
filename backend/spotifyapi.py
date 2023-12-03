@@ -70,6 +70,7 @@ def  get_song_by_genre(token, seed_genres_list):
 
 
 token = get_token()
+print(token)
 # result = search_for_artist(token, "Taylor Swift")
 # artist_id = result["id"]
 # songs_by_artist = get_song_by_artist(token, artist_id)
