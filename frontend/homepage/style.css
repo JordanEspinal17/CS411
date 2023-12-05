@@ -50,8 +50,67 @@ header {
 }
 
 .navbar .all-links li {
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.all-links {
+  display: flex;
+  gap: 20px;
   list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.all-links li {
+  margin-right: 15px;
+}
+
+.all-links li:last-child {
+  margin-right: 0;
+}
+
+.all-links li {
+  text-decoration: none;
+  color: white;
+}
+
+.userEmail {
+  margin-left: auto;
+}
+
+#userEmail {
+  text-decoration: none;
+  color: white
+}
+
+#playlist {
+  height: 300px; /* Set the height to your desired value */
+  overflow: auto; /* Add a scrollbar if the content overflows */
+}
+
+#menu-toggler {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #menu-toggler {
+    display: block;
+  }
+
+  .all-links {
+    flex-direction: column;
+    text-align: center;
+    display: none;
+  }
+
+  #menu-toggler:checked + .all-links {
+    display: flex;
+  }
 }
 
 .navbar .logo a {
