@@ -2,7 +2,7 @@
 
 // IMDb code
 const test = [];
-const apiKey = '8d13eb941850b40a5045c5a7a4058cc1'; // Your IMDb API key here
+const apiKey = ''; // Your IMDb API key here
 
 async function getMovieDetails(apiKey, searchQuery) {
     const searchUrl = `https://api.themoviedb.org/3/search/movie`;
@@ -43,8 +43,8 @@ async function getMovieDetails(apiKey, searchQuery) {
     }
 }
 // Spotify code
-const clientId = '1f51fa80d0e84b60bc39e058b4b4388e';
-const clientSecret = '4e727e4433434472a65d7a0bb1935854';
+const clientId = '';
+const clientSecret = '';
 
 // ... (existing code)
 
@@ -104,7 +104,7 @@ async function getSongByGenres(token, genresList) {
 
 // Function to handle search
 async function handleSearch() {
-    const apiKey = '8d13eb941850b40a5045c5a7a4058cc1';  // Replace with your IMDb API key
+    const apiKey = '';  // Replace with your IMDb API key
     const movieInput = document.getElementById('movieInput').value;
 
     // Call the getMovieDetails function with user input
