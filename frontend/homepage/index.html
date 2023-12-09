@@ -40,12 +40,14 @@
     <section class="search" id="search">
       <div class="container">
         <form action="" class="search-bar">
-            <input type="text" placeholder="search for a movie" name="q" id="searchInput">
-            <button type="submit"><img src="images/search.png"><i</button>
-  
+          <input type="text" placeholder="Search for a movie" name="q" id="movieInput">
+          <button type="button" id="searchButton">
+            <img src="images/search.png" alt="Search">
+          </button>
         </form>
       </div>
     </section>
+
 
     <script type="module">
       const logoutLink = document.querySelector("#logoutLink");
@@ -74,9 +76,9 @@
     <section class="playlist" id="playlist">
       <h2>Playlist</h2>
       <p>Explore our curated playlist for you.</p>
-      <ul class="sections" id="playlistResults">
+      <div class="sections" id="results">
         
-      </ul>
+      </div>
     </section>
 
   
@@ -88,6 +90,6 @@
         </span>
       </div>
     </footer>
-
+     <script src="app.js"></script>
   </body>
 </html>

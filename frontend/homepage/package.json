@@ -1,0 +1,8 @@
+{
+  "name": "imdb-spotify-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}
